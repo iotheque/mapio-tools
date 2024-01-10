@@ -218,17 +218,49 @@ class CommandInterface(object):
 
         self.sp.open()
 
-        chip = gpiod.chip(1)
-        config = gpiod.line_request()
-        config.request_type = gpiod.line_request.DIRECTION_OUTPUT
-        self.flash_gpio = chip.get_line(11)
-        self.flash_gpio.request(config)
+        # UART1
+        if aport == "/dev/ttyS1":
+            chip = gpiod.chip(1)
+            config = gpiod.line_request()
+            config.request_type = gpiod.line_request.DIRECTION_OUTPUT
+            self.flash_gpio = chip.get_line(3)
+            self.flash_gpio.request(config)
 
-        chip = gpiod.chip(2)
-        config = gpiod.line_request()
-        config.request_type = gpiod.line_request.DIRECTION_OUTPUT
-        self.reset_gpio = chip.get_line(6)
-        self.reset_gpio.request(config)
+            chip = gpiod.chip(1)
+            config = gpiod.line_request()
+            config.request_type = gpiod.line_request.DIRECTION_OUTPUT
+            self.reset_gpio = chip.get_line(5)
+            self.reset_gpio.request(config)
+
+        # UART3
+        if aport == "/dev/ttyAMA3":
+            chip = gpiod.chip(1)
+            config = gpiod.line_request()
+            config.request_type = gpiod.line_request.DIRECTION_OUTPUT
+            self.flash_gpio = chip.get_line(7)
+            self.flash_gpio.request(config)
+
+            chip = gpiod.chip(2)
+            config = gpiod.line_request()
+            config.request_type = gpiod.line_request.DIRECTION_OUTPUT
+            self.reset_gpio = chip.get_line(4)
+            self.reset_gpio.request(config)
+
+        # UART5
+        if aport == "/dev/ttyAMA5":
+            chip = gpiod.chip(1)
+            config = gpiod.line_request()
+            config.request_type = gpiod.line_request.DIRECTION_OUTPUT
+            self.flash_gpio = chip.get_line(6)
+            self.flash_gpio.request(config)
+
+            chip = gpiod.chip(2)
+            config = gpiod.line_request()
+            config.request_type = gpiod.line_request.DIRECTION_OUTPUT
+            self.reset_gpio = chip.get_line(6)
+            self.reset_gpio.request(config)
+
+
 
     def invoke_bootloader(self, dtr_active_high=False, inverted=False, sonoff_usb=False):
         # Use the DTR and RTS lines to control bootloader and the !RESET pin.
