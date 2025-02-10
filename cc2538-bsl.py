@@ -897,7 +897,7 @@ class CC26xx(Chip):
         protocols = user_id[1] >> 4
 
         # We can now detect the exact device
-        if wafer_id == 0xB99A:
+        if wafer_id == 0xB99A or wafer_id == 0xBB77 or wafer_id == 0xBB7A:
             chip = self._identify_cc26xx(pg_rev, protocols)
         elif wafer_id == 0xB9BE:
             chip = self._identify_cc13xx(pg_rev, protocols)
