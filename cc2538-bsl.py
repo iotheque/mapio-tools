@@ -220,13 +220,13 @@ class CommandInterface(object):
 
         # UART1
         if aport == "/dev/ttyS1":
-            chip = gpiod.chip(1)
+            chip = gpiod.chip(2)
             config = gpiod.line_request()
             config.request_type = gpiod.line_request.DIRECTION_OUTPUT
             self.flash_gpio = chip.get_line(3)
             self.flash_gpio.request(config)
 
-            chip = gpiod.chip(1)
+            chip = gpiod.chip(2)
             config = gpiod.line_request()
             config.request_type = gpiod.line_request.DIRECTION_OUTPUT
             self.reset_gpio = chip.get_line(5)
@@ -234,13 +234,13 @@ class CommandInterface(object):
 
         # UART3
         if aport == "/dev/ttyAMA3":
-            chip = gpiod.chip(1)
+            chip = gpiod.chip(2)
             config = gpiod.line_request()
             config.request_type = gpiod.line_request.DIRECTION_OUTPUT
             self.flash_gpio = chip.get_line(7)
             self.flash_gpio.request(config)
 
-            chip = gpiod.chip(2)
+            chip = gpiod.chip(3)
             config = gpiod.line_request()
             config.request_type = gpiod.line_request.DIRECTION_OUTPUT
             self.reset_gpio = chip.get_line(4)
@@ -248,13 +248,13 @@ class CommandInterface(object):
 
         # UART5
         if aport == "/dev/ttyAMA5":
-            chip = gpiod.chip(1)
+            chip = gpiod.chip(2)
             config = gpiod.line_request()
             config.request_type = gpiod.line_request.DIRECTION_OUTPUT
             self.flash_gpio = chip.get_line(6)
             self.flash_gpio.request(config)
 
-            chip = gpiod.chip(2)
+            chip = gpiod.chip(3)
             config = gpiod.line_request()
             config.request_type = gpiod.line_request.DIRECTION_OUTPUT
             self.reset_gpio = chip.get_line(6)
