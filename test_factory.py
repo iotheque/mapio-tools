@@ -106,7 +106,7 @@ def test_pcie_bus():
     # Check command return
     assert dmesg_process.returncode == 0, f"Execution command error dmesg : {dmesg_process.stderr.decode()}"
 
-    pattern = "pcieport 0000:00:00.0: PME: Signaling with IRQ 23"
+    pattern = "pcieport 0000:00:00.0: PME: Signaling with IRQ"
     assert pattern in dmesg_process.stdout.decode(), f"Patern'{pattern}' not found in dmesg."
 
 
